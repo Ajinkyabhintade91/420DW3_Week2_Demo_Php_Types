@@ -18,8 +18,7 @@ include_once "helpers/debug_functions.php";
 
 // ##### NULL
 echo "<h3>Null:</h3>";
-$undefined_var;
-$null_var = null;
+$undefined;
 $null_var = null;
 echo '$null_var is ['.$null_var.'] debug: '.debug($null_var, false).'<br/>';
 // Note the use of string interpolation; the variable used inside the double-quoted string.
