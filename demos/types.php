@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+
 /*
  * Week2_Demo_Php_Types types.php
  * 
@@ -14,9 +15,6 @@ declare(strict_types=1);
 include_once "helpers/debug_functions.php";
 
 
-echo "<h1>Types:</h1>";
-
-
 
 // ##### NULL
 echo "<h3>Null:</h3>";
@@ -25,7 +23,8 @@ $null_var = null;
 $null_var = null;
 echo '$null_var is ['.$null_var.'] debug: '.debug($null_var, false).'<br/>';
 // Note the use of string interpolation; the variable used inside the double-quoted string.
-echo "\$undefined is [$undefined] export: ".debug($undefined, false)."<br/>";
+// Also note the use of the "@" error suppression operator to suppress the undefined variable warnings from the output
+echo @"\$undefined is [$undefined] export: ".debug(@$undefined, false)."<br/>";
 
 
 
@@ -162,3 +161,51 @@ $object_copy->newProperty = "a new property!";
 echo '$object_copy dump: <br/>';
 var_dump($object_copy);
 echo '<br/>';
+
+
+
+// ##### Enumerations
+enum MyPureEnum {
+    case FirstCase;
+    case SecondCase;
+}
+enum MyBackedEnum: int {
+    case FirstCase = 1;
+    case SecondCase = 2;
+}
+echo 'MyBackedEnum::FirstCase debug: '.debug(MyBackedEnum::FirstCase, false).'<br/>';
+echo 'MyBackedEnum::SecondCase debug: '.debug(MyBackedEnum::SecondCase, false).'<br/>';
+
+
+
+// ##### Resources
+// No demonstrations of resources yet as we will see some of the few existing cases later on during the class
+
+
+
+// ##### Callable
+function do_something(callable $function, mixed ...$args) : mixed {
+    return $function(...$args); // call the provided function with the provided arguments.
+}
+
+
+
+// ##### mixed
+function any_argument_function(mixed $anything) : mixed {
+    var_dump($anything);
+    return $anything;
+}
+
+
+
+// ##### void
+function say_hello() : void {
+    echo "Hello!";
+}
+
+
+
+// ##### never
+function exit_php(int $code) : never {
+    exit($code);
+}
