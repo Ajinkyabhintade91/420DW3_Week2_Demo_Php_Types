@@ -70,19 +70,20 @@ echo "<h3>Strings:</h3>";
 $doublequoted_string = "hello there!";
 $singlequoted_string = 'General Kenobi! You are a bold one...';
 $concatenated_string = $doublequoted_string." -".$singlequoted_string;
+// NOTE: the HTML <pre> tags preserves white spaces
 $heredoc_string = <<<HEREDOC
-This
+<pre>This
 is
 a
 heredoc
-block.
+block.</pre>
 HEREDOC;
-$nowdoc_string = <<<NOWDOC
-This
+$nowdoc_string = <<<'NOWDOC'
+<pre>This
 is
 a
 nowdoc
-block.
+block.</pre>
 NOWDOC;
 $string_interpolation = "$doublequoted_string -$singlequoted_string";
 echo '$doublequoted_string is ['.$doublequoted_string.'] debug: '.debug($doublequoted_string, false).'<br/>';
@@ -164,6 +165,7 @@ echo '<br/>';
 
 
 // ##### Enumerations
+echo "<h3>Enumerations:</h3>";
 enum MyPureEnum {
     case FirstCase;
     case SecondCase;
